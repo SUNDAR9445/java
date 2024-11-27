@@ -8,7 +8,13 @@ body{
 }
 .main{
     height: 100px;
-    width: 100%;
-    padding: 3px;
+   
+    display: flex;
+
 }
+.button{
+    display: flex;
+ justify-content: right;
+}
+    
 
