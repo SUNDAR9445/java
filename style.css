@@ -12,9 +12,7 @@ body{
     display: flex;
 
 }
-.button{
-    display: flex;
- justify-content: right;
+.button :hover{
+    background-color: chocolate;
+    color: coral;
 }
-    
-

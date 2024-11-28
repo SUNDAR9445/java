@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="style.css" href=".//style.css">
+    <title>Bank Transaction System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+        input {
+            padding: 8px;
+            margin: 5px;
+            width: 200px;
+        }
+        button {
+            padding: 10px;
+            margin: 5px;
+            cursor: pointer;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Bank Transaction System</h1>
+
+<p>Account Balance: $<span id="balance">0</span></p>
+
+<h3>Deposit</h3>
+<input type="number" id="depositAmount" placeholder="Enter deposit amount" />
+<button onclick="deposit()">Deposit</button>
+
+<h3>Withdraw</h3>
+<input type="number" id="withdrawAmount" placeholder="Enter withdrawal amount" />
+<button onclick="withdraw()">Withdraw</button>
+
+<div class="result" id="message"></div>
+
+<script>
+// Initialize the balance
+let balance = 0;
+
+// Function to deposit money
+function deposit() {
+    let depositAmount = parseFloat(document.getElementById("depositAmount").value);
+    if (isNaN(depositAmount) || depositAmount <= 0) {
+        document.getElementById("message").textContent = "Please enter a valid deposit amount.";
+        return;
+    }
+    balance += depositAmount;
+    document.getElementById("balance").textContent = balance.toFixed(2);
+    document.getElementById("message").textContent = "Deposit successful!";
+    document.getElementById("depositAmount").value = "";
+}
+
+// Function to withdraw money
+function withdraw() {
+    let withdrawAmount = parseFloat(document.getElementById("withdrawAmount").value);
+    if (isNaN(withdrawAmount) || withdrawAmount <= 0) {
+        document.getElementById("message").textContent = "Please enter a valid withdrawal amount.";
+        return;
+    }
+    if (withdrawAmount > balance) {
+        document.getElementById("message").textContent = "Insufficient funds!";
+        return;
+    }
+    balance -= withdrawAmount;
+    document.getElementById("balance").textContent = balance.toFixed(2);
+    document.getElementById("message").textContent = "Withdrawal successful!";
+    document.getElementById("withdrawAmount").value = "";
+}
+</script>
+
+</body>
+</html>
+
+
+
+
